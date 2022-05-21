@@ -1,0 +1,30 @@
+https://practice.geeksforgeeks.org/problems/depth-first-traversal-for-a-graph/1# 
+ 
+   class Solution {
+  public:
+    // Function to return a list containing the DFS traversal of the graph.
+    void dfsH(vector<int> adj[],int a,vector<int> &res, int vis[]){
+        vis[a]=1;
+    //    cout<<a<<" ";
+         res.push_back(a);
+         for(auto i: adj[a]){
+             if(vis[i]==0){
+                 dfsH(adj,i,res,vis);
+             }
+         }
+    }
+    vector<int> dfsOfGraph(int V, vector<int> adj[]) {
+        // Code here
+        int vis[V]={0};
+        vector<int> res;
+        
+        vis[0]=1;
+        dfsH(adj,0,res,vis);
+        return res;
+         
+    }
+};
+
+SC : O(V)
+TC : O(E+V) 
+where V is the number of vertices and E is the number of edges
