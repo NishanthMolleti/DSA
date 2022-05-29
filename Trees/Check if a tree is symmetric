@@ -1,0 +1,19 @@
+https://practice.geeksforgeeks.org/problems/symmetric-tree/1
+
+class Solution{
+    public:
+    // return true/false denoting whether the tree is Symmetric or not
+    
+bool isSymmetric(struct Node* root)
+   {
+    return root==NULL || help(root->left,root->right);
+   }
+   bool help(struct Node* left,struct Node* right){
+       if(left==NULL || right==NULL)return left==right;
+       if(left->data!=right->data)return false;
+       return help(left->left,right->right) && help(left->right,right->left);
+   }
+};
+
+SC : O(1)
+TC : O(N)
