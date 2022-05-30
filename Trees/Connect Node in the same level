@@ -1,0 +1,33 @@
+https://practice.geeksforgeeks.org/problems/connect-nodes-at-same-level/1#
+
+
+class Solution
+{
+    public:
+    //Function to connect nodes at same level.
+    void level(Node *root,int l,map<int,Node*> & mp) {
+        if(root==NULL){return;}
+        
+        if(mp.find(l)==mp.end()) {
+            mp[l]=root;
+        }
+        else {
+            mp[l]->nextRight=root;
+            mp[l]=root;
+        }
+        level(root->left,l+1,mp);
+        level(root->right,l+1,mp);
+    }
+    
+    void connect(Node *root)
+    {
+       // Your Code Here
+       map<int,Node *> mp;
+       level(root,0,mp);
+    }  
+      
+};
+
+
+SC : O(N)
+TC : O(N)
