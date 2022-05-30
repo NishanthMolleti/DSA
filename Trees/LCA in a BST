@@ -1,0 +1,25 @@
+https://practice.geeksforgeeks.org/problems/lowest-common-ancestor-in-a-bst/1
+
+Node* LCA(Node *root, int n1, int n2)
+{
+    if(!root) return root;
+  Node* temp=root;
+  while(temp)
+  {
+      if(temp->data<=n1 || temp->data<=n2)
+      {
+        if(temp->data==n1 || temp->data==n2) return temp;
+        else if(temp->data > n1 && temp->data < n2 || temp->data > n2 && temp->data < n1) return temp;
+        else temp=temp->right;
+      }
+      else
+      {
+       if(temp->data==n1 || temp->data==n2) return temp;
+       else if(temp->data > n1 && temp->data < n2 || temp->data > n2 && temp->data < n1) return temp;
+       else temp=temp->left;
+      }
+}
+}
+
+SC : O(H)
+TC : O(H)
