@@ -1,0 +1,18 @@
+https://practice.geeksforgeeks.org/problems/check-for-bst/1
+
+class Solution {
+public:
+    bool isValidBSTAdd(TreeNode* root, long min, long max) 
+    {
+        if(root==NULL)  return true;
+        if(root->val>min && root->val<max) return isValidBSTAdd(root->left,min, root->val) && isValidBSTAdd(root->right,root->val,max);
+        return false;
+    }
+    bool isValidBST(TreeNode* root) 
+    { 
+        return isValidBSTAdd(root,LONG_MIN, LONG_MAX); 
+    }
+};
+
+SC : O(H)
+TC : O(N)
